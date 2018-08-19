@@ -1,0 +1,11 @@
+{
+  "name": "elm-tutorial",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:friedbrice/elm-tutorial.git",
+  "author": "Daniel Brice <danielbrice@gmail.com>",
+  "license": "BSD3",
+  "dependencies": {
+    "json-server": "0.9.5"
+  }
+}
