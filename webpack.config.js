@@ -39,7 +39,7 @@ module.exports = {
       }
     ],
     noParse: /\.elm$/
-  }
+  },
   devServer: {
     inline: true,
     stats: { colors: true }
