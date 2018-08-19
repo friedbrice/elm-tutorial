@@ -1,8 +1,9 @@
-module App exposing (..)
+module Commands exposing (..)
 
 
-import Html exposing (Html, button, div, text, program)
+import Html exposing (Html, div, button, text, program)
 import Html.Events exposing (onClick)
+import Random
 
 
 -- MODEL
@@ -14,14 +15,15 @@ type alias Model =
 
 init : ( Model, Cmd Msg )
 init =
-    ( 0, Cmd.none )
+    ( 1, Cmd.none )
 
 
 -- MESSAGES
 
 
 type Msg
-    = Increment Int
+    = Roll
+    | OnResult Int
 
 
 -- VIEW
@@ -30,7 +32,7 @@ type Msg
 view : Model -> Html Msg
 view model =
     div []
-        [ button [ onClick (Increment 2) ] [ text "+" ]
+        [ button [ onClick Roll ] [ text "Roll" ]
         , text (toString model)
         ]
 
@@ -41,16 +43,11 @@ view model =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        Increment howMuch ->
-            ( model + howMuch, Cmd.none )
+        Roll ->
+            ( model, Random.generate OnResult (Random.int 1 6) )
 
-
--- SUBSCRIPTIONS
-
-
-subscriptions : Model -> Sub Msg
-subscriptions model =
-    Sub.none
+        OnResult res ->
+            ( res, Cmd.none )
 
 
 -- MAIN
@@ -62,5 +59,5 @@ main =
         { init = init
         , view = view
         , update = update
-        , subscriptions = subscriptions
+        , subscriptions = (always Sub.none)
         }
