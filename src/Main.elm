@@ -1,23 +1,17 @@
 module Main exposing (..)
 
-import Html exposing (Html, div, text, program)
+-- external
+import Html exposing (program)
 
-type alias Model = String
+-- internal
+import Commands exposing (fetchPlayers)
+import Msgs exposing (Msg)
+import Models exposing (Model, initialModel)
+import Update exposing (update)
+import View exposing (view)
 
 init : (Model, Cmd Msg)
-init = ("Hello", Cmd.none)
-
-type Msg = NoOp
-
-view : Model -> Html Msg
-view model =
-    div []
-        [ text model ]
-
-update : Msg -> Model -> (Model, Cmd Msg)
-update msg model =
-    case msg of
-        NoOp -> (model, Cmd.none)
+init = (initialModel, fetchPlayers)
 
 subscriptions : Model -> Sub Msg
 subscriptions model = Sub.none
