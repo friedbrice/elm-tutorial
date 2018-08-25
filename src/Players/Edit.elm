@@ -51,6 +51,7 @@ btnLevelIncrease player =
         [ i [ class "fa fa-plus-circle" ] [] ]
 
 listBtn : Html Msg
-listBtn = a attr chld where
-    attr = [ class "btn regular", href playersPath ]
-    chld = [ i [ class "fa fa-chevron-left mr1" ] [], text "List" ]
+listBtn =
+    let attr = [ class "btn regular", href playersPath ]
+        chld = [ i [ class "fa fa-chevron-left mr1" ] [], text "List" ]
+    in a attr chld

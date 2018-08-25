@@ -53,6 +53,7 @@ playerRow player =
         ]
 
 editBtn : Player -> Html.Html Msg
-editBtn player = a attr chld where
-    attr = [ class "btn regular", href (playerPath player.id) ]
-    chld = [ i [ class "fa fa-pencil mr1" ] [], text "Edit" ]
+editBtn player =
+    let attr = [ class "btn regular", href (playerPath player.id) ]
+        chld = [ i [ class "fa fa-pencil mr1" ] [], text "Edit" ]
+    in a attr chld
