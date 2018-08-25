@@ -46,5 +46,5 @@ btnLevelDecrease player =
 
 btnLevelIncrease : Player -> Html Msg
 btnLevelIncrease player =
-    a [ class "btn ml1 h1", onClick (Msgs.ChangelLevel player 1) ]
+    a [ class "btn ml1 h1", onClick (Msgs.ChangeLevel player 1) ]
         [ i [ class "fa fa-plus-circle" ] [] ]
