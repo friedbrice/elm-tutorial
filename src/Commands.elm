@@ -20,16 +20,6 @@ fetchPlayers =
 fetchPlayersUrl : String
 fetchPlayersUrl = "http://localhost:4000/players"
 
-playersDecoder : Decode.Decoder (List Player)
-playersDecoder = Decode.list playerDecoder
-
-playerDecoder : Decode.Decoder Player
-playerDecoder =
-    decode Player
-        |> required "id" Decode.string
-        |> required "name" Decode.string
-        |> required "level" Decode.int
-
 savePlayerUrl : PlayerId -> String
 savePlayerUrl playerId = "http://localhost:4000/players/" ++ playerId
 
@@ -47,6 +37,16 @@ savePlayerRequest player =
 
 savePlayerCmd : Player -> Cmd Msg
 savePlayerCmd player = Http.send Msgs.OnPlayerSave (savePlayerRequest player)
+
+playersDecoder : Decode.Decoder (List Player)
+playersDecoder = Decode.list playerDecoder
+
+playerDecoder : Decode.Decoder Player
+playerDecoder =
+    decode Player
+        |> required "id" Decode.string
+        |> required "name" Decode.string
+        |> required "level" Decode.int
 
 playerEncoder : Player -> Encode.Value
 playerEncoder player =

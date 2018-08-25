@@ -32,8 +32,8 @@ playerEditPage model playerId = case model.players of
 
     RemoteData.Success players ->
         let maybePlayer = players
-            |> List.filter (\player -> player.id == playerId)
-            |> List.head
+                |> List.filter (\player -> player.id == playerId)
+                |> List.head
         in case maybePlayer of
             Just player -> Players.Edit.view player
             Nothing -> notFoundView

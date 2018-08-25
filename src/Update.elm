@@ -5,8 +5,8 @@ import RemoteData
 
 -- internal
 import Commands exposing (savePlayerCmd)
-import Msgs exposing (Msg(..))
 import Models exposing (Model, Player)
+import Msgs exposing (Msg(..))
 import Routing exposing (parseLocation)
 
 update : Msg -> Model -> (Model, Cmd Msg)
@@ -31,6 +31,6 @@ updatePlayer model updatedPlayer =
             if updatedPlayer.id == currentPlayer.id
                 then updatedPlayer
                 else currentPlayer
-        updatePlayerList player = List.map pick player
+        updatePlayerList players = List.map pick players
         updatedPlayers = RemoteData.map updatePlayerList model.players
     in { model | players = updatedPlayers }

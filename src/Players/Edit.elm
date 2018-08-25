@@ -2,12 +2,13 @@ module Players.Edit exposing (..)
 
 -- external
 import Html exposing (..)
-import Html.Attributes exposing (class)
+import Html.Attributes exposing (class, value, href)
 import Html.Events exposing (onClick)
 
 -- internal
-import Msgs exposing (Msg)
 import Models exposing (Player)
+import Msgs exposing (Msg)
+import Routing exposing (playersPath)
 
 view : Player -> Html Msg
 view model =
@@ -19,11 +20,11 @@ view model =
 nav : Player -> Html Msg
 nav model =
     div [ class "clearfix mb2 white bg-black p1" ]
-        []
+        [ listBtn ]
 
 form : Player -> Html Msg
 form player =
-    div [class "m3" ]
+    div [ class "m3" ]
         [ h1 [] [ text player.name ]
         , formLevel player
         ]
@@ -48,3 +49,8 @@ btnLevelIncrease : Player -> Html Msg
 btnLevelIncrease player =
     a [ class "btn ml1 h1", onClick (Msgs.ChangeLevel player 1) ]
         [ i [ class "fa fa-plus-circle" ] [] ]
+
+listBtn : Html Msg
+listBtn = a attr chld where
+    attr = [ class "btn regular", href playersPath ]
+    chld = [ i [ class "fa fa-chevron-left mr1" ] [], text "List" ]
