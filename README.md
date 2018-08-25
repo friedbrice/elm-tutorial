@@ -10,7 +10,17 @@
 - [yarn](https://yarnpkg.com/en/docs/usage)
 - [elm](https://guide.elm-lang.org/install.html)
 
+**Install Dependencies:**
+
+In the project directory, use
+
+```
+yarn install
+```
+
 **Build and Run Project:**
+
+In the project directory, use
 
 ```
 yarn start
